@@ -1,0 +1,4 @@
+---
+# defaults file for mrleerkotte.postfix-relay
+
+postfix_relay_host: ""

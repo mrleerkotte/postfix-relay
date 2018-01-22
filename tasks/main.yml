@@ -1,0 +1,22 @@
+---
+# tasks file for mrleerkotte.postfix-relay
+- name: Ensure Postfix is installed
+  become: true
+  package:
+          name: postfix
+          state: present
+
+- name: Ensure Postfix is set to start at boot
+  become: true
+  service:
+          name: postfix
+          state: started
+          enabled: yes
+
+- name: Ensure smarthost is set
+  become: true
+  lineinfile:
+          path: /etc/postfix/main.cf
+          regexp: '^relayhost ='
+          line: "relayhost = {{ postfix_relay_host }}"
+          notify: restart postfix service
