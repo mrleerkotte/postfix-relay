@@ -1,2 +1,7 @@
 ---
 # handlers file for mrleerkotte.postfix-relay
+- name: restart postfix service
+  become: true
+  service:
+    name: postfix
+    state: restarted
