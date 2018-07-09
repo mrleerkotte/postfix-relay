@@ -11,7 +11,8 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
-        - Xenial
+        - xenial
+        - bionic
 
   galaxy_tags: 
    - networking
