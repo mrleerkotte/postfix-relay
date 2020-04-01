@@ -3,20 +3,29 @@
 - name: Ensure Postfix is installed
   become: true
   package:
-          name: postfix
-          state: present
+    name: postfix
+    state: present
 
 - name: Ensure Postfix is set to start at boot
   become: true
   service:
-          name: postfix
-          state: started
-          enabled: yes
+    name: postfix
+    state: started
+    enabled: yes
+
+- name: Enable SMTP over TLS if true
+  become: true
+  lineinfile:
+    path: '{{ postfix_config_file }}'
+    regexp: '^smtp_use_tls\s?='
+    line: "smtp_use_tls = yes"
+  when:
+    - postfix_relay_tls is true
 
 - name: Ensure smarthost is set
   become: true
   lineinfile:
-          path: /etc/postfix/main.cf
-          regexp: '^relayhost ='
-          line: "relayhost = {{ postfix_relay_host }}"
+    path: '{{ postfix_config_file }}'
+    regexp: '^relayhost\s?='
+    line: "relayhost = {{ postfix_relay_host }}"
   notify: restart postfix service

@@ -1,4 +1,6 @@
 ---
 # defaults file for mrleerkotte.postfix-relay
 
+postfix_config_file: "/etc/postfix/main.cf"
 postfix_relay_host: ""
+postfix_relay_tls: false
