@@ -17,7 +17,7 @@ Available variables are listed below, along with default values (see `defaults/m
 
 Specify the host to relay mail on to.
 
-  postfix_relay_tls: false
+	postfix_relay_tls: false
 
 Specify whether to use SMTP over TLS or not. 
 
