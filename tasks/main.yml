@@ -19,8 +19,7 @@
     path: '{{ postfix_config_file }}'
     regexp: '^smtp_use_tls\s?='
     line: "smtp_use_tls = yes"
-  when:
-    - postfix_relay_tls is true
+  when: postfix_relay_tls == true 
 
 - name: Ensure smarthost is set
   become: true
