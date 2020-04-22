@@ -1,4 +1,4 @@
-Role Name
+Ansible Role: postfix-relay
 =========
 
 This role installs postfix and configures it to relay mail to a host.
