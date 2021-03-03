@@ -2,20 +2,20 @@
 # tasks file for mrleerkotte.postfix-relay
 - name: Ensure Postfix is installed
   become: true
-  package:
+  ansible.builtin.package:
     name: postfix
     state: present
 
 - name: Ensure Postfix is set to start at boot
   become: true
-  service:
+  ansible.builtin.service:
     name: postfix
     state: started
     enabled: yes
 
 - name: Enable SMTP over TLS if true
   become: true
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: '{{ postfix_config_file }}'
     regexp: '^smtp_use_tls\s?='
     line: "smtp_use_tls = yes"
@@ -23,7 +23,7 @@
 
 - name: Ensure smarthost is set
   become: true
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: '{{ postfix_config_file }}'
     regexp: '^relayhost\s?='
     line: "relayhost = {{ postfix_relay_host }}"
