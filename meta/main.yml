@@ -4,15 +4,21 @@ galaxy_info:
 
   license: BSD-3
 
-  min_ansible_version: 2
+  min_ansible_version: 2.9
 
   github_branch: master
 
   platforms:
+    - name: Debian
+      version:
+        - jessie
+        - stretch
+        - buster
     - name: Ubuntu
       versions:
         - xenial
         - bionic
+        - focal
 
   galaxy_tags: 
    - networking
