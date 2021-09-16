@@ -11,9 +11,9 @@ galaxy_info:
   platforms:
     - name: Debian
       version:
-        - jessie
         - stretch
         - buster
+        - bullseye
     - name: Ubuntu
       versions:
         - xenial
