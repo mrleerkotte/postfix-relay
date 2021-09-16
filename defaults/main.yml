@@ -2,5 +2,10 @@
 # defaults file for mrleerkotte.postfix-relay
 
 postfix_config_file: "/etc/postfix/main.cf"
+
 postfix_relay_host: ""
 postfix_relay_tls: false
+
+postfix_rewrite_from: false
+postfix_rewrite_from_map: "/etc/postfix/generic"
+postfix_rewrite_from_address: "example@example.com"

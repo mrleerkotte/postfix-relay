@@ -19,7 +19,25 @@
     path: '{{ postfix_config_file }}'
     regexp: '^smtp_use_tls\s?='
     line: "smtp_use_tls = yes"
-  when: postfix_relay_tls == true 
+  when: postfix_relay_tls
+
+- name: Enable from address rewriting
+  become: true
+  ansible.builtin.lineinfile:
+    path: '{{ postfix_config_file }}'
+    regexp: '^smtp_generic_maps\s?='
+    line: "smtp_generic_maps = hash:{{ postfix_rewrite_from_map }}"
+  when: postfix_rewrite_from_address 
+
+- name: Template out generic map
+  become: true
+  ansible.builtin.template:
+    src: generic.j2
+    dest: '{{ postfix_rewrite_from_map }}'
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+  notify: postmap rewrite
 
 - name: Ensure smarthost is set
   become: true

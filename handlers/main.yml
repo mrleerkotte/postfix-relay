@@ -5,3 +5,7 @@
   ansible.builtin.service:
     name: postfix
     state: restarted
+
+- name: postmap rewrite
+  become: true
+  ansible.builtin.command: postmap {{ postfix_rewrite_from_map }}

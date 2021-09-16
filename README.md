@@ -19,7 +19,19 @@ Specify the host to relay mail on to.
 
 	postfix_relay_tls: false
 
-Specify whether to use SMTP over TLS or not. 
+Specify whether to use SMTP over TLS or not.
+
+	postfix_rewrite_from: false
+
+Specify whether to enable from address rewriting, defaults to false.
+
+	postfix_rewrite_from_map: "/etc/postfix/generic"
+
+Specify the location of the from address rewrite map.
+
+	postfix_rewrite_from_address: "example@example.com"
+
+Specify the email address to use for from address rewriting.
 
 Dependencies
 ------------
