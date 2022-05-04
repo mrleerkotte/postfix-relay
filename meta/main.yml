@@ -9,6 +9,9 @@ galaxy_info:
   github_branch: master
 
   platforms:
+    - name: EL
+      versions:
+        - all
     - name: Debian
       version:
         - stretch
