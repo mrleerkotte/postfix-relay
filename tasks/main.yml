@@ -27,7 +27,7 @@
     path: '{{ postfix_config_file }}'
     regexp: '^smtp_generic_maps\s?='
     line: "smtp_generic_maps = hash:{{ postfix_rewrite_from_map }}"
-  when: postfix_rewrite_from_address 
+  when: postfix_rewrite_from
 
 - name: Template out generic map
   become: true
@@ -37,6 +37,7 @@
     owner: root
     group: root
     mode: u=rw,g=r,o=r
+  when: postfix_rewrite_from
   notify: postmap rewrite
 
 - name: Ensure smarthost is set
